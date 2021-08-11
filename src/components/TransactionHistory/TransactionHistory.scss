@@ -13,20 +13,39 @@ $symbolsColor: lightsteelblue;
 
 // table
 .transaction-history__table__body {
-  position: relative;
+  top: 0;
+  position: absolute;
   height: 100%;
+  width: 100%;
 }
 
 .fade-in {
-  transition-property: opacity;
-  transition-duration: 3s;
+  animation: fadeinanimation 1s forwards;
+}
 
-  &.opacity0 {
+@keyframes fadeinanimation {
+  0% {
     opacity: 0;
   }
 
-  &.opacity1 {
+  100% {
     opacity: 1;
+  }
+}
+
+.slide-out {
+  animation: slideoutanimation 1s forwards;
+}
+
+@keyframes slideoutanimation {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
   }
 }
 
