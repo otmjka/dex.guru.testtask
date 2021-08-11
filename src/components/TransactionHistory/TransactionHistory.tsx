@@ -3,6 +3,7 @@ import TransactionHistoryRecordTableItem from './TransactionHistoryRecordTableIt
 import './TransactionHistory.scss';
 // TODO: where should store types
 import { TransactionHistoryRecord } from '../../../typings/TransactionHistoryRecord';
+import { IntlProvider } from 'react-intl';
 
 export interface TransactionHistoryProps {
   transactionHistoryRecords: Array<TransactionHistoryRecord>;
@@ -14,14 +15,16 @@ const TransactionHistory: FC<TransactionHistoryProps> = ({
 }) => {
   // TODO: classnames thema + base classes
   return (
-    <div className="transaction-history">
-      {transactionHistoryRecords.map((transactionHistoryRecord) => (
-        <TransactionHistoryRecordTableItem
-          key={transactionHistoryRecord.id}
-          data={transactionHistoryRecord}
-        />
-      ))}
-    </div>
+    <IntlProvider locale={'en'} defaultLocale={'en'}>
+      <div className="transaction-history">
+        {transactionHistoryRecords.map((transactionHistoryRecord) => (
+          <TransactionHistoryRecordTableItem
+            key={transactionHistoryRecord.id}
+            data={transactionHistoryRecord}
+          />
+        ))}
+      </div>
+    </IntlProvider>
   );
 };
 

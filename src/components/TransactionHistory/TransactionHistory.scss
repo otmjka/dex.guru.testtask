@@ -1,3 +1,46 @@
 .transaction-history {
+  font-family: Arial, Helvetica, sans-serif;
   background: purple;
+}
+
+.transaction-history__table__item {
+  display: flex;
+  padding: 4px;
+  &:nth-child(2n + 1) {
+    background-color: darkmagenta;
+  }
+}
+
+.table__col__token__amount {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16px;
+}
+
+.token-amount-title {
+  display: flex;
+}
+
+.token-amount-value {
+  color: white;
+  margin-right: 4px;
+}
+
+.token-amount-symbol {
+  color: lightsteelblue;
+}
+
+.table__col__transaction__value {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction__value__title {
+  display: flex;
+  color: white;
+}
+
+.transaction__value__currency__sign {
+  margin-right: 4px;
+  color: darken(white, 30%);
 }
