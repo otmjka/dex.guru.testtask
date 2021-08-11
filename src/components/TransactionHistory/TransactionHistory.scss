@@ -1,46 +1,101 @@
+$blockTransactionHistoryBackground: purple;
+$textColor: yellow;
+$symbolsColor: lightsteelblue;
+
+// Block
 .transaction-history {
   font-family: Arial, Helvetica, sans-serif;
-  background: purple;
+  background: $blockTransactionHistoryBackground;
+  position: relative;
+  overflow: scroll;
+  height: 100%;
+}
+
+// table
+.transaction-history__table__body {
+  position: relative;
+  height: 100%;
+}
+
+.fade-in {
+  transition-property: opacity;
+  transition-duration: 3s;
+
+  &.opacity0 {
+    opacity: 0;
+  }
+
+  &.opacity1 {
+    opacity: 1;
+  }
 }
 
 .transaction-history__table__item {
   display: flex;
-  padding: 4px;
   &:nth-child(2n + 1) {
-    background-color: darkmagenta;
+    background-color: darken($blockTransactionHistoryBackground, 10%);
   }
 }
 
-.table__col__token__amount {
+.transaction-history__table__col {
   display: flex;
+  flex: 1;
+  padding: 8px;
+}
+
+// Col 1
+.transaction-history__token__amount {
+  display: flex;
+  flex: 2;
   flex-direction: column;
-  margin-right: 16px;
+  align-items: flex-end;
 }
 
-.token-amount-title {
+.transaction-history__token__symbol {
   display: flex;
-}
-
-.token-amount-value {
-  color: white;
-  margin-right: 4px;
-}
-
-.token-amount-symbol {
-  color: lightsteelblue;
-}
-
-.table__col__transaction__value {
-  display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
-.transaction__value__title {
+.transaction-history__token__amount__title {
   display: flex;
-  color: white;
 }
 
-.transaction__value__currency__sign {
+.transaction-history__token__amount__value {
+  color: $textColor;
   margin-right: 4px;
-  color: darken(white, 30%);
+}
+
+.transaction-history__token__amount__symbol {
+  color: $symbolsColor;
+}
+
+// Col 2
+
+.transaction-history__value {
+  display: flex;
+  color: $textColor;
+}
+
+.transaction-history__value__currency__sign {
+  margin-right: 4px;
+  color: $symbolsColor;
+}
+
+.transaction-history__value__label {
+  color: $textColor;
+}
+// Col 3
+
+.transaction-history__datetime__title {
+  display: flex;
+}
+
+.transaction-history__date__value {
+  color: $textColor;
+  margin-right: 4px;
+}
+
+.transaction-history__time__value {
+  color: $textColor;
 }
