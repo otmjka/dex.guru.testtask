@@ -1,0 +1,16 @@
+@import '../../theme/theme.scss';
+
+.transaction-history__header__container {
+  display: flex;
+  background-color: $blockTransactionHistoryBackground;
+  height: $headerHeight;
+  align-items: center;
+  padding-left: $blockHorizontalPadding;
+  padding-right: $blockHorizontalPadding;
+  font-family: $themeFontFamily;
+  color: $textColor;
+}
+
+.transaction-history__header__title {
+  flex: 1;
+}

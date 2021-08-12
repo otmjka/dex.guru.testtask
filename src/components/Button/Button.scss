@@ -1,0 +1,19 @@
+@import '../../theme/theme.scss';
+
+.transaction-history__button {
+  border: 0;
+  border-radius: 10px;
+  line-height: 34px;
+  padding-left: $blockHorizontalPadding;
+  padding-right: $blockHorizontalPadding;
+  color: $textColor;
+  background-color: transparent;
+  cursor: pointer;
+
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
+.transaction-history__button_selected {
+  background-color: darken($blockTransactionHistoryBackground, 10%);
+}

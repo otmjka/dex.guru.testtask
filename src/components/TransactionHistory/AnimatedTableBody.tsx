@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
-import { TransactionHistoryRecord } from '../../../typings/TransactionHistoryRecord';
+import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
 import { TransactionHistoryProps } from './TransactionHistory';
 import TransactionHistoryRecordTableItem from './TransactionHistoryRecordTableItem';
 

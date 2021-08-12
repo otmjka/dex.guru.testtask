@@ -1,26 +1,32 @@
 import React, { FC } from 'react';
-import './TransactionHistory.scss';
-// TODO: where should store types
-import { TransactionHistoryRecord } from '../../../typings/TransactionHistoryRecord';
 import { IntlProvider } from 'react-intl';
+
+import messages from '../../translations';
+import { Locales } from '../../typings/Locales';
+import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
+
 import AnimatedTableBody from './AnimatedTableBody';
+import { TransactionHistoryBlockContainer } from './TransactionHistory.parts';
+import './TransactionHistory.scss';
 
 export interface TransactionHistoryProps {
   transactionHistoryRecords: Array<TransactionHistoryRecord>;
 }
 
-// TODO: to decide transactionHistoryRecords mb Records as posfix instead Data
 const TransactionHistory: FC<TransactionHistoryProps> = ({
   transactionHistoryRecords,
 }) => {
-  // TODO: classnames thema + base classes
   return (
-    <IntlProvider locale={'en'} defaultLocale={'en'}>
-      <div className="transaction-history">
+    <IntlProvider
+      messages={messages[Locales.en]}
+      locale={Locales.en}
+      defaultLocale={Locales.en}
+    >
+      <TransactionHistoryBlockContainer>
         <AnimatedTableBody
           transactionHistoryRecords={transactionHistoryRecords}
         />
-      </div>
+      </TransactionHistoryBlockContainer>
     </IntlProvider>
   );
 };

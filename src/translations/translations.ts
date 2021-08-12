@@ -1,6 +1,8 @@
-export default {
-  en: {
-    'TransactionHistory.Heading.Title': 'Transaction History',
+import { Locales } from '../typings/Locales';
+
+const translations = {
+  [Locales.en]: {
+    'TransactionHistory.Navbar.Heading': 'Transaction History',
     'TransactionHistory.Navbar.FilterAllTitle': 'All',
     'TransactionHistory.Navbar.FilterAccountTitle': 'My orders',
 
@@ -9,3 +11,5 @@ export default {
     'TransactionHistory.TableHeading.TransactionTime': 'Transaction time',
   },
 };
+
+export default translations;

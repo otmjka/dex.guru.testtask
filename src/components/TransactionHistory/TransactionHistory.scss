@@ -1,10 +1,7 @@
-$blockTransactionHistoryBackground: purple;
-$textColor: yellow;
-$symbolsColor: lightsteelblue;
-
+@import '../../theme/theme.scss';
 // Block
 .transaction-history {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $themeFontFamily;
   background: $blockTransactionHistoryBackground;
   position: relative;
   overflow: scroll;

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useIntl } from 'react-intl';
 import Button from '../Button';
 import { NavbarContainer, Heading, ButtonGroup } from './Navbar.parts';
-import { FilterTypes } from '../../../typings/FilterTypes';
+import { FilterTypes } from '../../typings/FilterTypes';
 interface NavbarProps {
   selectedFilter: FilterTypes;
   onFilterClick: (filterValue: FilterTypes) => void;
@@ -25,7 +25,7 @@ const Navbar: FC<NavbarProps> = ({ selectedFilter, onFilterClick }) => {
         />
         <Button
           title={formatMessage({
-            id: 'TransactionHistory.Navbar.FilterAllTitle',
+            id: 'TransactionHistory.Navbar.FilterAccountTitle',
           })}
           selected={selectedFilter === FilterTypes.account}
           onClick={() => onFilterClick(FilterTypes.account)}

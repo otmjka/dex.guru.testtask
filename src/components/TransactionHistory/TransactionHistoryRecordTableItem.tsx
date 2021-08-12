@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { TransactionHistoryRecord } from '../../../typings/TransactionHistoryRecord';
+import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
 import CurrencySymbol from './CurrencySymbol';
 import TokenAmount from './TokenAmount';
 import TokenValue from './TokenValue';

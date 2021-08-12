@@ -64,6 +64,7 @@
     "@storybook/node-logger": "^6.3.6",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.6",
+    "@types/uuid": "^8.3.1",
     "prettier": "^2.3.2"
   }
 }

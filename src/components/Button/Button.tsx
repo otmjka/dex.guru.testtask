@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
 
+import './Button.scss';
+
 const Button: FC<{
   title: string;
   selected: boolean;
