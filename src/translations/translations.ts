@@ -7,7 +7,7 @@ const translations = {
     'TransactionHistory.Navbar.FilterAccountTitle': 'My orders',
 
     'TransactionHistory.TableHeading.TokenAmount': 'Token Amount',
-    'TransactionHistory.TableHeading.TokenValue': 'Token Amount',
+    'TransactionHistory.TableHeading.TokenValue': 'Token Value',
     'TransactionHistory.TableHeading.TransactionTime': 'Transaction time',
   },
 };

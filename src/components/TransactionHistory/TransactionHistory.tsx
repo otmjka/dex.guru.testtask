@@ -3,30 +3,31 @@ import { IntlProvider } from 'react-intl';
 
 import messages from '../../translations';
 import { Locales } from '../../typings/Locales';
-import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
 
-import AnimatedTableBody from './AnimatedTableBody';
-import { TransactionHistoryBlockContainer } from './TransactionHistory.parts';
-import './TransactionHistory.scss';
+import TransactionHistoryView from './TransactionHistoryView';
+import useTransactionHistory, {
+  TransactionHistoryConfig,
+} from './useTransactionHistory';
 
 export interface TransactionHistoryProps {
-  transactionHistoryRecords: Array<TransactionHistoryRecord>;
+  config: TransactionHistoryConfig;
 }
 
-const TransactionHistory: FC<TransactionHistoryProps> = ({
-  transactionHistoryRecords,
-}) => {
+const TransactionHistory: FC<TransactionHistoryProps> = ({ config }) => {
+  const { transactionHistoryRecords, selectedFilter, onChangeFilter } =
+    useTransactionHistory(config);
+
   return (
     <IntlProvider
       messages={messages[Locales.en]}
       locale={Locales.en}
       defaultLocale={Locales.en}
     >
-      <TransactionHistoryBlockContainer>
-        <AnimatedTableBody
-          transactionHistoryRecords={transactionHistoryRecords}
-        />
-      </TransactionHistoryBlockContainer>
+      <TransactionHistoryView
+        selectedFilter={selectedFilter}
+        transactionHistoryRecords={transactionHistoryRecords}
+        onChangeFilter={onChangeFilter}
+      />
     </IntlProvider>
   );
 };

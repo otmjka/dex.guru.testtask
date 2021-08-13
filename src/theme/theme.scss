@@ -1,8 +1,14 @@
 $themeFontFamily: Arial, Helvetica, sans-serif;
+$textFontSize: 16px;
+$headingFontSize: 22px;
 
 $blockTransactionHistoryBackground: purple;
 $textColor: yellow;
 $symbolsColor: lightsteelblue;
 
 $headerHeight: 66px;
+$heightTableHeader: 52px;
 $blockHorizontalPadding: 16px;
+
+$borderColor: lighten($blockTransactionHistoryBackground, 30%);
+$baseBorder: 1px solid $borderColor;

@@ -8,6 +8,14 @@
   height: 100%;
 }
 
+.transaction-history__content {
+  font-family: $themeFontFamily;
+  background: $blockTransactionHistoryBackground;
+  position: relative;
+  overflow: scroll;
+  height: 100%;
+}
+
 // table
 .transaction-history__table__body {
   top: 0;
@@ -57,6 +65,8 @@
   display: flex;
   flex: 1;
   padding: 8px;
+  color: $textColor;
+  font-family: $themeFontFamily;
 }
 
 // Col 1

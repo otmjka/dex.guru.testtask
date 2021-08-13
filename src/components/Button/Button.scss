@@ -11,7 +11,11 @@
   cursor: pointer;
 
   transition-property: background-color;
-  transition-duration: 200ms;
+  transition-duration: 700ms;
+  font-size: $textFontSize;
+  &:hover {
+    background-color: darken($blockTransactionHistoryBackground, 5%);
+  }
 }
 
 .transaction-history__button_selected {

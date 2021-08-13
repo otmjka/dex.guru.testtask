@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { useIntl } from 'react-intl';
-const TokenValue: FC<{ value: number }> = ({ value }) => {
+const TokenValue: FC<{ value?: number }> = ({ value }) => {
   const { formatNumber } = useIntl();
   return (
     <div className="transaction-history__value">
       <div className="transaction-history__value__currency__sign">$</div>
       <div className="transaction-history__value__label">
-        {formatNumber(value)}
+        {value ? formatNumber(value) : ''}
       </div>
     </div>
   );

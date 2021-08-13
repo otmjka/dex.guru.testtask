@@ -1,0 +1,12 @@
+@import '../../theme/theme.scss';
+
+.transaction-history__tablerow_borderbottom {
+  height: $heightTableHeader;
+  background-color: $blockTransactionHistoryBackground;
+  border-bottom: $baseBorder;
+}
+
+.transaction-history__tablecol_header {
+  justify-content: center;
+  align-items: center;
+}

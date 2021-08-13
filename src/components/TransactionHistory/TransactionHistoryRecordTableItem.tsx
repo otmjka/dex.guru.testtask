@@ -4,6 +4,7 @@ import CurrencySymbol from './CurrencySymbol';
 import TokenAmount from './TokenAmount';
 import TokenValue from './TokenValue';
 import TransactionTime from './TransactionTime';
+import { TableCol, TableRow } from './TransactionHistoryRecordTableItem.parts';
 
 const TransactionHistoryRecordTableItem: FC<{
   data: Partial<TransactionHistoryRecord>;
@@ -17,24 +18,24 @@ const TransactionHistoryRecordTableItem: FC<{
     timestamp,
   } = data;
   return (
-    <div className="transaction-history__table__item">
-      <div className="transaction-history__table__col">
+    <TableRow>
+      <TableCol>
         <div className="transaction-history__token__amount">
-          <TokenAmount value={amount0Out} symbol={token0Symbol} />
-          <TokenAmount value={amount1Out} symbol={token1Symbol} />
+          <TokenAmount value={amount0Out} />
+          <TokenAmount value={amount1Out} />
         </div>
         <div className="transaction-history__token__symbol">
           <CurrencySymbol symbol={token0Symbol} />
           <CurrencySymbol symbol={token1Symbol} />
         </div>
-      </div>
-      <div className="transaction-history__table__col">
+      </TableCol>
+      <TableCol>
         <TokenValue value={amountUSD} />
-      </div>
-      <div className="transaction-history__table__col">
+      </TableCol>
+      <TableCol>
         <TransactionTime value={timestamp} />
-      </div>
-    </div>
+      </TableCol>
+    </TableRow>
   );
 };
 
