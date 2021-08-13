@@ -1,21 +1,26 @@
 import React, { FC } from 'react';
 import { IntlProvider } from 'react-intl';
+import { TransactionHistoryConfig } from '../../api/apiClient';
 
 import messages from '../../translations';
 import { Locales } from '../../typings/Locales';
 
 import TransactionHistoryView from './TransactionHistoryView';
-import useTransactionHistory, {
-  TransactionHistoryConfig,
-} from './useTransactionHistory';
+import useTransactionHistory from './useTransactionHistory';
 
 export interface TransactionHistoryProps {
   config: TransactionHistoryConfig;
+  account: string;
+  tokenId: string;
 }
 
-const TransactionHistory: FC<TransactionHistoryProps> = ({ config }) => {
+const TransactionHistory: FC<TransactionHistoryProps> = ({
+  config,
+  account,
+  tokenId,
+}) => {
   const { transactionHistoryRecords, selectedFilter, onChangeFilter } =
-    useTransactionHistory(config);
+    useTransactionHistory({ config, account, tokenId });
 
   return (
     <IntlProvider
