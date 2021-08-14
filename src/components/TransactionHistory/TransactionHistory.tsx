@@ -21,8 +21,13 @@ const TransactionHistory: FC<TransactionHistoryProps> = ({
   tokenId,
 }) => {
   // TODO: no items, error, loading
-  const { transactionHistoryRecords, selectedFilter, onChangeFilter } =
-    useTransactionHistory({ config, account, tokenId });
+  const {
+    error,
+    loading,
+    transactionHistoryRecords,
+    selectedFilter,
+    onChangeFilter,
+  } = useTransactionHistory({ config, account, tokenId });
 
   return (
     <IntlProvider
@@ -31,6 +36,8 @@ const TransactionHistory: FC<TransactionHistoryProps> = ({
       defaultLocale={Locales.en}
     >
       <TransactionHistoryView
+        error={error}
+        loading={loading}
         selectedFilter={selectedFilter}
         transactionHistoryRecords={transactionHistoryRecords}
         onChangeFilter={onChangeFilter}

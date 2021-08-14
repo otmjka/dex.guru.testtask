@@ -36,7 +36,7 @@ const fetchTransactionHistory = async (
   } catch (error) {
     dispatch({
       type: ActionType.fetchFail,
-      payload: error.message || 'error while fetching data',
+      payload: 'error while fetching data',
     });
   }
 
