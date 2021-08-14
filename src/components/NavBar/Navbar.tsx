@@ -20,6 +20,7 @@ const Navbar: FC<NavbarProps> = ({ selectedFilter, onFilterClick }) => {
       />
       <ButtonGroup>
         <Button
+          testIdTitle={FilterTypes.all}
           title={formatMessage({
             id: 'TransactionHistory.Navbar.FilterAllTitle',
           })}
@@ -27,6 +28,7 @@ const Navbar: FC<NavbarProps> = ({ selectedFilter, onFilterClick }) => {
           onClick={() => onFilterClick(FilterTypes.all)}
         />
         <Button
+          testIdTitle={FilterTypes.account}
           title={formatMessage({
             id: 'TransactionHistory.Navbar.FilterAccountTitle',
           })}

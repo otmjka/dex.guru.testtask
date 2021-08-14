@@ -18,7 +18,7 @@ const TransactionHistoryRecordTableItem: FC<{
     timestamp,
   } = data;
   return (
-    <TableRow>
+    <TableRow role="table-row">
       <TableCol>
         <div className="transaction-history__token__amount">
           <TokenAmount value={amount0Out} />
