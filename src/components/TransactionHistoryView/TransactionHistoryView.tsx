@@ -12,18 +12,26 @@ import {
 } from './TransactionHistory.parts';
 
 interface TransactionHistoryViewProps {
+  loading: boolean;
+  error: string | null;
   selectedFilter: FilterTypes;
   transactionHistoryRecords: Array<TransactionHistoryRecord>;
   onChangeFilter: (filterValue: FilterTypes) => void;
 }
 const TransactionHistoryView: FC<TransactionHistoryViewProps> = ({
+  loading,
+  error,
   selectedFilter,
   transactionHistoryRecords,
   onChangeFilter,
 }) => {
   return (
     <TransactionHistoryBlockContainer>
-      <Navbar selectedFilter={selectedFilter} onFilterClick={onChangeFilter} />
+      <Navbar
+        loading={loading}
+        selectedFilter={selectedFilter}
+        onFilterClick={onChangeFilter}
+      />
       <TableHeader />
       <TransactionHistoryContent>
         <AnimatedTableBody

@@ -7,11 +7,16 @@ import { FilterTypes } from '../../typings/FilterTypes';
 import { NavbarContainer, Heading, ButtonGroup } from './Navbar.parts';
 
 interface NavbarProps {
+  loading: boolean;
   selectedFilter: FilterTypes;
   onFilterClick: (filterValue: FilterTypes) => void;
 }
 
-const Navbar: FC<NavbarProps> = ({ selectedFilter, onFilterClick }) => {
+const Navbar: FC<NavbarProps> = ({
+  loading,
+  selectedFilter,
+  onFilterClick,
+}) => {
   const { formatMessage } = useIntl();
   return (
     <NavbarContainer>
@@ -21,6 +26,7 @@ const Navbar: FC<NavbarProps> = ({ selectedFilter, onFilterClick }) => {
       <ButtonGroup>
         <Button
           testIdTitle={FilterTypes.all}
+          disabled={loading}
           title={formatMessage({
             id: 'TransactionHistory.Navbar.FilterAllTitle',
           })}
@@ -29,6 +35,7 @@ const Navbar: FC<NavbarProps> = ({ selectedFilter, onFilterClick }) => {
         />
         <Button
           testIdTitle={FilterTypes.account}
+          disabled={loading}
           title={formatMessage({
             id: 'TransactionHistory.Navbar.FilterAccountTitle',
           })}

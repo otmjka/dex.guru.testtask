@@ -17,15 +17,15 @@ export default {
 
 const Template: ComponentStory<typeof TransactionHistoryView> = (args) => {
   const [selectedData, setSelectedData] = useState(
-    transactionHistoryResponseData.data,
+    args.transactionHistoryRecords,
   );
   const [selectedFilter, setSelectedFilter] = useState<FilterTypes>(
     FilterTypes.all,
   );
-  const handleSelectedFilter = (value) => {
+  const handleSelectedFilter = (value: FilterTypes) => {
     setSelectedData(
       value === FilterTypes.all
-        ? transactionHistoryResponseData.data
+        ? args.transactionHistoryRecords
         : transactionHistoryResponseDataMy.data,
     );
     setSelectedFilter(value);
@@ -53,4 +53,9 @@ const Template: ComponentStory<typeof TransactionHistoryView> = (args) => {
 export const Primary = Template.bind({});
 Primary.args = {
   transactionHistoryRecords: transactionHistoryResponseData.data,
+};
+
+export const EmptyData = Template.bind({});
+EmptyData.args = {
+  transactionHistoryRecords: [],
 };

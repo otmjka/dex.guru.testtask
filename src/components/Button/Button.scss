@@ -7,17 +7,23 @@
   padding-left: $blockHorizontalPadding;
   padding-right: $blockHorizontalPadding;
   color: $textColor;
-  background-color: transparent;
+  background-color: $blockTransactionHistoryBackground;
   cursor: pointer;
 
   transition-property: background-color;
   transition-duration: 700ms;
   font-size: $textFontSize;
-  &:hover {
+  &:hover:not(.transaction-history__button_disabled) {
     background-color: darken($blockTransactionHistoryBackground, 5%);
   }
 }
 
 .transaction-history__button_selected {
   background-color: darken($blockTransactionHistoryBackground, 10%);
+}
+
+.transaction-history__button_disabled {
+  cursor: wait;
+  color: $disabledButtonTextColor;
+  background-color: lighten($blockTransactionHistoryBackground, 10%);
 }

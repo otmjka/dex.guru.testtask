@@ -9,6 +9,10 @@ const translations = {
     'TransactionHistory.TableHeading.TokenAmount': 'Token Amount',
     'TransactionHistory.TableHeading.TokenValue': 'Token Value',
     'TransactionHistory.TableHeading.TransactionTime': 'Transaction time',
+
+    'TransactionHistory.TableContent.NoRecordsMessage':
+      'There are not records here',
+    'TransactionHistory.TableContent.LoadingMessage': 'Loading',
   },
 };
 

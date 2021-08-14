@@ -1,9 +1,11 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
+import { useIntl } from 'react-intl';
 
 import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
 import TransactionHistoryRecordTableItem from '../TransactionHistoryRecordTableItem';
+import Alert from '../Alert';
 
 type Records = {
   id: string;
@@ -15,6 +17,7 @@ type Records = {
 const AnimatedTableBody: FC<{
   transactionHistoryRecords: Array<TransactionHistoryRecord>;
 }> = ({ transactionHistoryRecords }) => {
+  const { formatMessage } = useIntl();
   const [newRecords, setNewRecords] = useState<Array<Records>>([]);
 
   useEffect(() => {
@@ -66,6 +69,13 @@ const AnimatedTableBody: FC<{
                 data={transactionHistoryRecord}
               />
             ))}
+            {!item.items.length && (
+              <Alert
+                title={formatMessage({
+                  id: 'TransactionHistory.TableContent.NoRecordsMessage',
+                })}
+              />
+            )}
           </div>
         );
       })}
