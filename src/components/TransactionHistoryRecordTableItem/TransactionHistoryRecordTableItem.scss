@@ -17,6 +17,10 @@
 }
 
 // Col 1
+.transaction-history__soldbought__label {
+  display: flex;
+  align-items: center;
+}
 .transaction-history__token__amount {
   display: flex;
   flex: 2;

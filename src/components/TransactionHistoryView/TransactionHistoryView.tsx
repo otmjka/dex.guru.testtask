@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { FilterTypes } from '../../typings/FilterTypes';
 import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
+import Alert from '../Alert';
 
 import Navbar from '../NavBar/Navbar';
 import TableHeader from '../TableHeader';
@@ -27,17 +28,22 @@ const TransactionHistoryView: FC<TransactionHistoryViewProps> = ({
 }) => {
   return (
     <TransactionHistoryBlockContainer>
-      <Navbar
-        loading={loading}
-        selectedFilter={selectedFilter}
-        onFilterClick={onChangeFilter}
-      />
-      <TableHeader />
-      <TransactionHistoryContent>
-        <AnimatedTableBody
-          transactionHistoryRecords={transactionHistoryRecords}
-        />
-      </TransactionHistoryContent>
+      {!error && (
+        <>
+          <Navbar
+            loading={loading}
+            selectedFilter={selectedFilter}
+            onFilterClick={onChangeFilter}
+          />
+          <TableHeader />
+          <TransactionHistoryContent>
+            <AnimatedTableBody
+              transactionHistoryRecords={transactionHistoryRecords}
+            />
+          </TransactionHistoryContent>
+        </>
+      )}
+      {!!error && <Alert title={error} />}
     </TransactionHistoryBlockContainer>
   );
 };

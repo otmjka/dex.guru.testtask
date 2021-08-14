@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import './ColorTriangle.scss';
 
-enum TiangleColor {
+export enum TiangleColor {
   red = 'red',
   green = 'green',
 }

@@ -21,7 +21,7 @@ const Template: ComponentStory<typeof Alert> = (args) => (
   >
     <div
       style={{
-        backgroundColor: 'orange',
+        backgroundColor: 'black',
         position: 'relative',
         width: '500px',
         height: '600px',

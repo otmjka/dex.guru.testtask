@@ -40,6 +40,8 @@ const Template: ComponentStory<typeof TransactionHistoryView> = (args) => {
           defaultLocale={Locales.en}
         >
           <TransactionHistoryView
+            error={args.error || null}
+            loading={args.loading || false}
             selectedFilter={selectedFilter}
             onChangeFilter={handleSelectedFilter}
             transactionHistoryRecords={selectedData}
@@ -58,4 +60,16 @@ Primary.args = {
 export const EmptyData = Template.bind({});
 EmptyData.args = {
   transactionHistoryRecords: [],
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  transactionHistoryRecords: [],
+  loading: true,
+};
+
+export const ErrorVariant = Template.bind({});
+ErrorVariant.args = {
+  transactionHistoryRecords: transactionHistoryResponseData.data,
+  error: 'Error: \n[code]: 422\n[message]: wrong',
 };
