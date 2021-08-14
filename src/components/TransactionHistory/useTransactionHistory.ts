@@ -2,9 +2,8 @@ import React, { useCallback, useEffect, useReducer } from 'react';
 import apiClient, { TransactionHistoryConfig } from '../../api/apiClient';
 import { FilterTypes } from '../../typings/FilterTypes';
 import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
-
+import fetchTransactionHistory from './fetchTransactionHistory';
 import { reducer, initState, ActionType } from './reducerTransactionHistory';
-const UPDATE_TIMEOUT = 3000;
 const useTransactionHistory = ({
   config,
   account,
@@ -24,45 +23,31 @@ const useTransactionHistory = ({
 
   const handleFetchTransactionHistory = useCallback(() => {
     dispatch({ type: ActionType.startFetching });
+
     if (state.cooldownTimerId) {
       clearTimeout(state.cooldownTimerId);
     }
-    (async () => {
-      try {
-        const transactionHistoryResponseData = await apiClient.postTokensSwaps({
-          config,
-          selectedFilter: state.selectedFilter,
-          account,
-          tokenId,
-        });
 
-        dispatch({
-          type: ActionType.fetchSuccess,
-          payload: transactionHistoryResponseData
-            ? transactionHistoryResponseData.data
-            : [],
-        });
-      } catch (error) {
-        dispatch({
-          type: ActionType.fetchFail,
-          payload: error.message || 'error while fetching data',
-        });
-      }
-
-      const timerId: any = setTimeout(
-        () =>
-          dispatch({
-            type: ActionType.cooldownTimer,
-            payload: timerId as number,
-          }),
-        UPDATE_TIMEOUT,
-      );
-    })();
+    fetchTransactionHistory({
+      config,
+      selectedFilter: state.selectedFilter,
+      account,
+      tokenId,
+      dispatch,
+    });
   }, [config, state.selectedFilter, tokenId, account, state.cooldownTimerId]);
 
   useEffect(() => {
+    if (state.isTimerStarted) {
+      return;
+    }
+
     handleFetchTransactionHistory();
-  }, [handleFetchTransactionHistory]);
+  }, [
+    handleFetchTransactionHistory,
+    state.cooldownTimerId,
+    state.isTimerStarted,
+  ]);
 
   const handleFilterClick = (filterValue: FilterTypes) => {
     dispatch({ type: ActionType.filterUpdated, payload: filterValue });

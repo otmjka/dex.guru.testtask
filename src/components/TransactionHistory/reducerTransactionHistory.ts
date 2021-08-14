@@ -7,6 +7,7 @@ export enum ActionType {
   fetchFail = 'fetchFail',
   filterUpdated = 'filterUpdated',
   cooldownTimer = 'cooldownTimer',
+  startTimer = 'startTimer',
 }
 
 type ActionStartFetch = {
@@ -30,15 +31,21 @@ type ActionFilterUpdated = {
 
 type ActionCooldown = {
   type: ActionType.cooldownTimer;
-  payload: number;
+  payload: number | null;
 };
 
-type TransactionHistoryAction =
+type ActionStartTimer = {
+  type: ActionType.startTimer;
+  payload: number | null;
+};
+
+export type TransactionHistoryAction =
   | ActionStartFetch
   | ActionFetchSuccess
   | ActionFetchFail
   | ActionFilterUpdated
-  | ActionCooldown;
+  | ActionCooldown
+  | ActionStartTimer;
 
 type TransactionHistoryState = {
   loading: boolean;
@@ -46,12 +53,22 @@ type TransactionHistoryState = {
   transactionHistoryRecords: Array<TransactionHistoryRecord>;
   selectedFilter: FilterTypes;
   cooldownTimerId: number | null;
+  isTimerStarted: boolean;
+};
+
+export const initState: TransactionHistoryState = {
+  selectedFilter: FilterTypes.all,
+  transactionHistoryRecords: [],
+  loading: true,
+  error: null,
+  cooldownTimerId: null,
+  isTimerStarted: false,
 };
 
 export const reducer = (
   state: TransactionHistoryState,
   action: TransactionHistoryAction,
-) => {
+): TransactionHistoryState => {
   switch (action.type) {
     case ActionType.startFetching:
       return { ...state, loading: true };
@@ -73,16 +90,21 @@ export const reducer = (
       return {
         ...state,
         selectedFilter: action.payload,
+        isTimerStarted: false, // !
+      };
+    case ActionType.startTimer:
+      return {
+        ...state,
+        cooldownTimerId: action.payload,
+        isTimerStarted: true,
+      };
+    case ActionType.cooldownTimer:
+      return {
+        ...state,
+        cooldownTimerId: action.payload,
+        isTimerStarted: false,
       };
     default:
       return state;
   }
-};
-
-export const initState: TransactionHistoryState = {
-  selectedFilter: FilterTypes.all,
-  transactionHistoryRecords: [],
-  loading: true,
-  error: null,
-  cooldownTimerId: null,
 };
