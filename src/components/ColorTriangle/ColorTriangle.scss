@@ -1,0 +1,15 @@
+@import '../../theme/theme.scss';
+
+.transition-history__color__triangle {
+  width: 0;
+  height: 0;
+  border-left: $triangleBorderSize solid transparent;
+}
+
+.transition-history__color__triangle__topright {
+  border-top: $triangleBorderSize solid $greenBorderColor;
+}
+
+.transition-history__color__triangle__bottomright {
+  border-bottom: $triangleBorderSize solid $redBorderColor;
+}
