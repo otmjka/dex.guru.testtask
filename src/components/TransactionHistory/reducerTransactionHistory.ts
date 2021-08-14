@@ -6,6 +6,7 @@ export enum ActionType {
   fetchSuccess = 'fetchSuccess',
   fetchFail = 'fetchFail',
   filterUpdated = 'filterUpdated',
+  cooldownTimer = 'cooldownTimer',
 }
 
 type ActionStartFetch = {
@@ -27,17 +28,24 @@ type ActionFilterUpdated = {
   payload: FilterTypes;
 };
 
+type ActionCooldown = {
+  type: ActionType.cooldownTimer;
+  payload: number;
+};
+
 type TransactionHistoryAction =
   | ActionStartFetch
   | ActionFetchSuccess
   | ActionFetchFail
-  | ActionFilterUpdated;
+  | ActionFilterUpdated
+  | ActionCooldown;
 
 type TransactionHistoryState = {
   loading: boolean;
   error: string | null;
   transactionHistoryRecords: Array<TransactionHistoryRecord>;
   selectedFilter: FilterTypes;
+  cooldownTimerId: number | null;
 };
 
 export const reducer = (
@@ -76,4 +84,5 @@ export const initState: TransactionHistoryState = {
   transactionHistoryRecords: [],
   loading: true,
   error: null,
+  cooldownTimerId: null,
 };
