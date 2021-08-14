@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import {
   TableCol,
   TableRow,
-} from '../TransactionHistory/TransactionHistoryRecordTableItem.parts';
+} from '../TransactionHistoryRecordTableItem/TransactionHistoryRecordTableItem.parts';
 
 import './TableHeader.scss';
 

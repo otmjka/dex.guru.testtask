@@ -5,7 +5,7 @@ import { TransactionHistoryConfig } from '../../api/apiClient';
 import messages from '../../translations';
 import { Locales } from '../../typings/Locales';
 
-import TransactionHistoryView from './TransactionHistoryView';
+import TransactionHistoryView from '../TransactionHistoryView';
 import useTransactionHistory from './useTransactionHistory';
 
 export interface TransactionHistoryProps {

@@ -3,8 +3,7 @@ import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
 import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
-import { TransactionHistoryProps } from './TransactionHistory';
-import TransactionHistoryRecordTableItem from './TransactionHistoryRecordTableItem';
+import TransactionHistoryRecordTableItem from '../TransactionHistoryRecordTableItem';
 
 type Records = {
   id: string;
@@ -13,10 +12,11 @@ type Records = {
   items: Array<TransactionHistoryRecord>;
 };
 
-const AnimatedTableBody: FC<TransactionHistoryProps> = ({
-  transactionHistoryRecords,
-}) => {
+const AnimatedTableBody: FC<{
+  transactionHistoryRecords: Array<TransactionHistoryRecord>;
+}> = ({ transactionHistoryRecords }) => {
   const [newRecords, setNewRecords] = useState<Array<Records>>([]);
+
   useEffect(() => {
     setNewRecords((oldRecords) => {
       const tailRecords = oldRecords.map((oldRecord) => ({
@@ -35,6 +35,17 @@ const AnimatedTableBody: FC<TransactionHistoryProps> = ({
       ];
     });
   }, [transactionHistoryRecords]);
+
+  const handleRemoveUselessItem = (itemId: string) => {
+    const endAnimatedItem = newRecords.find((item) => item.id === itemId);
+    if (endAnimatedItem?.fadeIn) {
+      return;
+    }
+    setNewRecords((oldRecords) =>
+      oldRecords.filter((record) => record.id !== itemId),
+    );
+  };
+
   return (
     <>
       {newRecords.map((item) => {
@@ -46,7 +57,7 @@ const AnimatedTableBody: FC<TransactionHistoryProps> = ({
               'slide-out': item.slideOut,
             })}
             onAnimationEnd={() => {
-              console.log('onAnimation end');
+              handleRemoveUselessItem(item.id);
             }}
           >
             {item.items.map((transactionHistoryRecord) => (

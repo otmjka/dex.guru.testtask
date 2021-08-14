@@ -1,8 +1,8 @@
 // TODO: move to separate folder mb src/stories
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import transactionHistoryResponseData from './stories/transactionHistoryResponseData.json';
-import transactionHistoryResponseDataMy from './stories/transactionHistoryResponseDataMy.json';
+import transactionHistoryResponseData from '../../mockData/transactionHistoryResponseData.json';
+import transactionHistoryResponseDataMy from '../../mockData/transactionHistoryResponseDataMy.json';
 import TransactionHistoryView from './TransactionHistoryView';
 import { useState } from 'react';
 import { FilterTypes } from '../../typings/FilterTypes';
