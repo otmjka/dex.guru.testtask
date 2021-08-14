@@ -23,5 +23,5 @@ export const Primary = Template.bind({});
 Primary.args = {
   config,
   tokenId: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48-eth',
-  account: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+  account: '0x61e1A8041186CeB8a561F6F264e8B2BB2E20e06D',
 };
