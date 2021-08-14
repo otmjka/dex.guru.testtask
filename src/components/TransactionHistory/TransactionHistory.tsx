@@ -19,6 +19,7 @@ const TransactionHistory: FC<TransactionHistoryProps> = ({
   account,
   tokenId,
 }) => {
+  // TODO: no items, error, loading
   const { transactionHistoryRecords, selectedFilter, onChangeFilter } =
     useTransactionHistory({ config, account, tokenId });
 

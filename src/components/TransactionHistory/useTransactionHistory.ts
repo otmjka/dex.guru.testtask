@@ -1,9 +1,13 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
-import apiClient, { TransactionHistoryConfig } from '../../api/apiClient';
+import React, { useEffect, useReducer } from 'react';
+
+import { TransactionHistoryConfig } from '../../api/apiClient';
 import { FilterTypes } from '../../typings/FilterTypes';
 import { TransactionHistoryRecord } from '../../typings/TransactionHistoryRecord';
+
 import fetchTransactionHistory from './fetchTransactionHistory';
+import startNewTimer from './startNewTimer';
 import { reducer, initState, ActionType } from './reducerTransactionHistory';
+
 const useTransactionHistory = ({
   config,
   account,
@@ -21,30 +25,43 @@ const useTransactionHistory = ({
 } => {
   const [state, dispatch] = useReducer(reducer, initState);
 
-  const handleFetchTransactionHistory = useCallback(() => {
+  // init + update filter + timer cooldown logic
+  useEffect(() => {
+    // timer started and filter are not changed
+    if (state.isTimerStarted) {
+      return;
+    }
+
+    // init or cooldownTimerId are changed flow
     dispatch({ type: ActionType.startFetching });
 
     if (state.cooldownTimerId) {
       clearTimeout(state.cooldownTimerId);
     }
 
-    fetchTransactionHistory({
-      config,
-      selectedFilter: state.selectedFilter,
-      account,
-      tokenId,
-      dispatch,
-    });
-  }, [config, state.selectedFilter, tokenId, account, state.cooldownTimerId]);
+    fetchTransactionHistory(
+      {
+        config,
+        selectedFilter: state.selectedFilter,
+        account,
+        tokenId,
+        dispatch,
+      },
+      () => {
+        startNewTimer({ dispatch });
+      },
+    );
 
-  useEffect(() => {
-    if (state.isTimerStarted) {
-      return;
-    }
-
-    handleFetchTransactionHistory();
+    return () => {
+      if (state.cooldownTimerId) {
+        clearTimeout(state.cooldownTimerId);
+      }
+    };
   }, [
-    handleFetchTransactionHistory,
+    config,
+    state.selectedFilter,
+    tokenId,
+    account,
     state.cooldownTimerId,
     state.isTimerStarted,
   ]);

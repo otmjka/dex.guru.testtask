@@ -57,6 +57,7 @@ const postTokensSwaps = async ({
       headers,
     });
   } catch (error) {
+    // TODO: humanreadable error
     debugger;
     console.log(error);
   }

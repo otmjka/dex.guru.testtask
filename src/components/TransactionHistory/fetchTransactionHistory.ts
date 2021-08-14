@@ -6,21 +6,19 @@ import {
   TransactionHistoryAction,
 } from './reducerTransactionHistory';
 
-const UPDATE_TIMEOUT = 30000;
-
-const fetchTransactionHistory = async ({
-  config,
-  selectedFilter,
-  account,
-  tokenId,
-  dispatch,
-}: {
+type FetchTransactionHistoryParams = {
   config: TransactionHistoryConfig;
   selectedFilter: FilterTypes;
   account: string;
   tokenId: string;
   dispatch: React.Dispatch<TransactionHistoryAction>;
-}) => {
+};
+
+const fetchTransactionHistory = async (
+  params: FetchTransactionHistoryParams,
+  callback: () => void,
+) => {
+  const { config, selectedFilter, account, tokenId, dispatch } = params;
   try {
     const transactionHistoryResponseData = await apiClient.postTokensSwaps({
       config,
@@ -42,17 +40,9 @@ const fetchTransactionHistory = async ({
     });
   }
 
-  const timerId: any = setTimeout(() => {
-    dispatch({
-      type: ActionType.cooldownTimer,
-      payload: null,
-    });
-  }, UPDATE_TIMEOUT);
-
-  dispatch({
-    type: ActionType.startTimer,
-    payload: timerId,
-  });
+  if (typeof callback === 'function') {
+    callback();
+  }
 };
 
 export default fetchTransactionHistory;
