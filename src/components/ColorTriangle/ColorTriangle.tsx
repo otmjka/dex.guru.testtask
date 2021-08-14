@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
 
+import './ColorTriangle.scss';
+
 enum TiangleColor {
   red = 'red',
   green = 'green',

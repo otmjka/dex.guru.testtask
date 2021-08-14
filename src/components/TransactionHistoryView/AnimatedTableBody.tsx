@@ -72,4 +72,5 @@ const AnimatedTableBody: FC<{
     </>
   );
 };
+
 export default AnimatedTableBody;

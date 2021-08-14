@@ -7,6 +7,7 @@ import { Locales } from '../../typings/Locales';
 
 import TransactionHistoryView from '../TransactionHistoryView';
 import useTransactionHistory from './useTransactionHistory';
+import './TransactionHistory.scss';
 
 export interface TransactionHistoryProps {
   config: TransactionHistoryConfig;

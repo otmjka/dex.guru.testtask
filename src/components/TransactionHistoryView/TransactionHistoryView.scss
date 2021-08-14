@@ -1,0 +1,17 @@
+@import '../../theme/theme.scss';
+// Block
+.transaction-history {
+  font-family: $themeFontFamily;
+  background: $blockTransactionHistoryBackground;
+  position: relative;
+  overflow: scroll;
+  height: 100%;
+}
+
+.transaction-history__content {
+  font-family: $themeFontFamily;
+  background: $blockTransactionHistoryBackground;
+  position: relative;
+  overflow: scroll;
+  height: 100%;
+}

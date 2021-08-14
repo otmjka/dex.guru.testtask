@@ -10,7 +10,6 @@ import {
   TransactionHistoryBlockContainer,
   TransactionHistoryContent,
 } from './TransactionHistory.parts';
-import './TransactionHistory.scss';
 
 interface TransactionHistoryViewProps {
   selectedFilter: FilterTypes;

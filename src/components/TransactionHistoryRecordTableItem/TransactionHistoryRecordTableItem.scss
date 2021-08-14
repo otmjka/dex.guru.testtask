@@ -1,66 +1,13 @@
 @import '../../theme/theme.scss';
-// Block
-.transaction-history {
-  font-family: $themeFontFamily;
-  background: $blockTransactionHistoryBackground;
-  position: relative;
-  overflow: scroll;
-  height: 100%;
-}
-
-.transaction-history__content {
-  font-family: $themeFontFamily;
-  background: $blockTransactionHistoryBackground;
-  position: relative;
-  overflow: scroll;
-  height: 100%;
-}
-
-// table
-.transaction-history__table__body {
-  top: 0;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.fade-in {
-  animation: fadeinanimation 1s forwards;
-}
-
-@keyframes fadeinanimation {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.slide-out {
-  animation: slideoutanimation 1s forwards;
-}
-
-@keyframes slideoutanimation {
-  0% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-}
-
-.transaction-history__table__item {
+// table row
+.transaction-history__table__row {
   display: flex;
+  background-color: $blockTransactionHistoryBackground;
   &:nth-child(2n + 1) {
     background-color: darken($blockTransactionHistoryBackground, 10%);
   }
 }
-
+// table col
 .transaction-history__table__col {
   display: flex;
   flex: 1;

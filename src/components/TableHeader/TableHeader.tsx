@@ -6,8 +6,6 @@ import {
   TableRow,
 } from '../TransactionHistoryRecordTableItem/TransactionHistoryRecordTableItem.parts';
 
-import './TableHeader.scss';
-
 const TableHeader: FC = () => {
   const { formatMessage } = useIntl();
   return (

@@ -1,8 +1,11 @@
 import React, { FC } from 'react';
 import { useIntl } from 'react-intl';
+
 import Button from '../Button';
-import { NavbarContainer, Heading, ButtonGroup } from './Navbar.parts';
 import { FilterTypes } from '../../typings/FilterTypes';
+
+import { NavbarContainer, Heading, ButtonGroup } from './Navbar.parts';
+
 interface NavbarProps {
   selectedFilter: FilterTypes;
   onFilterClick: (filterValue: FilterTypes) => void;

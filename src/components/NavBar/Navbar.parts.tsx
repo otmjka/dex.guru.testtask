@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 
-import './Navbar.scss';
-
 export const NavbarContainer: FC = ({ children }) => (
   <div className="transaction-history__header__container">{children}</div>
 );

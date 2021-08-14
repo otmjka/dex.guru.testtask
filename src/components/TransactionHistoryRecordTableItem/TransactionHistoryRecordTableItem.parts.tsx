@@ -19,7 +19,7 @@ export const TableRow: FC<{ className?: string }> = ({
   className,
 }) => (
   <div
-    className={cn('transaction-history__table__item', {
+    className={cn('transaction-history__table__row', {
       [`${className}`]: !!className,
     })}
   >
