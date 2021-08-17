@@ -28,7 +28,6 @@ const TransactionHistory: FC<TransactionHistoryProps> = ({
     selectedFilter,
     onChangeFilter,
   } = useTransactionHistory({ config, account, tokenId });
-
   return (
     <IntlProvider
       messages={messages[Locales.en]}

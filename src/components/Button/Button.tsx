@@ -19,7 +19,7 @@ const Button: FC<{
   onClick = noob,
 }) => (
   <button
-    data-testid={`${testIdTitle}-${selected}`}
+    data-testid={`${testIdTitle}-${selected}-${disabled}`}
     disabled={disabled}
     className={cn('transaction-history__button', {
       'transaction-history__button_selected': selected,

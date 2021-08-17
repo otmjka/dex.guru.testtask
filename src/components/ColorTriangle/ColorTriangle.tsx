@@ -12,6 +12,7 @@ const ColorTriangle: FC<{ color: TiangleColor }> = ({
   color = TiangleColor.green,
 }) => (
   <div
+    data-testid={`colortriangle`}
     className={cn('transition-history__color__triangle', {
       'transition-history__color__triangle__topright':
         color === TiangleColor.green,

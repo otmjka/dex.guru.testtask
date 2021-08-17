@@ -18,6 +18,8 @@ const TestComponent: FC = () => {
       defaultLocale={Locales.en}
     >
       <TransactionHistoryView
+        loading={false}
+        error={null}
         selectedFilter={selectedFilter}
         transactionHistoryRecords={transactionHistoryRecords.data}
         onChangeFilter={(value) => setSelectedFilter(value)}

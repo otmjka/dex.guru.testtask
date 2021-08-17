@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.fade-in {
+.transaction-history__animation_fadein {
   animation: fadeinanimation 1s forwards;
 }
 
@@ -20,7 +20,7 @@
   }
 }
 
-.slide-out {
+.transaction-history__animation_slideout {
   animation: slideoutanimation 1s forwards;
 }
 

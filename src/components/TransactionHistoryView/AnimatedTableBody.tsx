@@ -51,13 +51,14 @@ const AnimatedTableBody: FC<{
 
   return (
     <>
-      {newRecords.map((item) => {
+      {newRecords.map((item, index) => {
         return (
           <div
+            data-testid={`animatedTableBody-${index}`}
             key={item.id}
             className={cn('transaction-history__table__body', {
-              'fade-in': item.fadeIn,
-              'slide-out': item.slideOut,
+              'transaction-history__animation_fadein': item.fadeIn,
+              'transaction-history__animation_slideout': item.slideOut,
             })}
             onAnimationEnd={() => {
               handleRemoveUselessItem(item.id);
