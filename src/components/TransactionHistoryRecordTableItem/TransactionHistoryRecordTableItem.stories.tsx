@@ -33,6 +33,3 @@ const Template: ComponentStory<typeof TransactionHistoryRecordTableItem> = (
 };
 
 export const Primary = Template.bind({});
-Primary.args = {
-  transactionHistoryRecords: transactionHistoryResponseData.data,
-};

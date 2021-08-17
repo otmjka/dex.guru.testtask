@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import ColorTriangle from './ColorTriangle';
+import ColorTriangle, { TiangleColor } from './ColorTriangle';
 
 export default {
   title: 'Components/ColorTriangle',
@@ -19,10 +19,10 @@ const Template: ComponentStory<typeof ColorTriangle> = (args) => (
 
 export const Green = Template.bind({});
 Green.args = {
-  color: 'green',
+  color: TiangleColor.green,
 };
 
 export const Red = Template.bind({});
 Red.args = {
-  color: 'red',
+  color: TiangleColor.red,
 };
